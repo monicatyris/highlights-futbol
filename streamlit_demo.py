@@ -19,7 +19,7 @@ import create_record
 
 
 def file_selector(folder_path='.'):
-    filenames = os.listdir(folder_path)
+    filenames = ['features_1half_Juventus_Udinese.npy', 'features_1half_Liverpool_RM.npy']
     selected_filename = st.sidebar.selectbox('Select a file', filenames)
     return os.path.join(folder_path, selected_filename)
 
@@ -53,13 +53,6 @@ if __name__ == '__main__':
 
 
         segmentations, ts_f, detections = spotting.spotting_actions(feat_reduced)
-        # print("Segmentations {}".format(segmentations))
-        # print("Ts_f 0{}".format(np.where(ts_f[:, 0] > 0)))
-        # print("Ts_f 1{}".format(np.where(ts_f[:, 1] > 0)))
-        # print("Ts_f 2{}".format(np.where(ts_f[:, 2] > 0)))
-        # print("Detections 0{}".format(np.where(detections[:, 0]>= 0.32)))
-        # print("Detections 1{}".format(np.where(detections[:, 1]>= 0.5)))
-        # print("Detections 2{}".format(np.where(detections[:, 2]>= -1)))
 
         show = st.sidebar.checkbox('Display highlights graphic')
         if show:
