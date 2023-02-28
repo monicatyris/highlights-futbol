@@ -6,3 +6,4 @@ SoccerNet==0.1.50
 streamlit
 tensorflow
 opencv-python-headless
+imutils
