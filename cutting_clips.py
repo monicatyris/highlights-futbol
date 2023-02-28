@@ -3,6 +3,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import os
+import datetime
 
 
 def create_clips(frames, vid, num_clips, event_str):
@@ -53,7 +54,7 @@ def save_clips(frames, vid, num_clips, event_str):
                     filename = os.path.join(newpath, "clip_" + str(event_str) + str(n) + ".mp4")
                     newclip = VideoFileClip(vid).subclip(t1, t2)
                     newclip.write_videofile(filename, fps=newclip.fps)
-                    df = df.append({'game_name': vid_name, 'clip': "clip_" + str(event_str) + str(n) + ".mp4", 'timestamp': round(f[j] / 120, 2)*60, 'event': str(event_str)}, ignore_index=True)
+                    df = df.append({'game_name': vid_name, 'clip': "clip_" + str(event_str) + str(n) + ".mp4", 'timestamp': str(datetime.timedelta(seconds=round(f[j] / 120, ndigits=1)*60)), 'event': str(event_str)}, ignore_index=True)
                     st.video(filename, 'video/mp4')
                     n += 1
     
